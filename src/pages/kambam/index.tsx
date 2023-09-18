@@ -42,7 +42,7 @@ useEffect(() => {
             <div>
             {cards.map((card)=> (<Card title={card.title} content={card.content} onClickExclude={() => onDeleteCard(card._id)} ></Card>))}
             </div>
-
+        
            
           </Diviprinc>
     )  
