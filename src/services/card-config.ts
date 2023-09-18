@@ -51,3 +51,17 @@ export const GetCards = async () => {
     }
   }
   
+  export const DeleteCards = async (id:string) => {
+ 
+    try{
+     const token = localStorage.getItem('token')
+     const newCards: AxiosResponse<CardType[]> = await api.delete(`/api/card/${id}`, {
+      headers: { Authorization: token },
+     })
+     return newCards.data
+    }
+    catch(error) {
+      console.log(error)
+   return false
+    }
+  }

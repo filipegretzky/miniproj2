@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react"
 import { Diviprinc } from "./style"
-import { GetCards } from "../../services/card-config"
+import { DeleteCards, GetCards } from "../../services/card-config"
 import Card from "../../component/cards"
 import NewCards from "../../component/newCards"
 
 
 
 const Kamnbam = () => {
-
-    
-    const [cards,setCards]=useState<CardType[]>([])
+const [cards,setCards]=useState<CardType[]>([])
 
 useEffect(() => {
     const fetCards = async() => {
@@ -22,9 +20,11 @@ useEffect(() => {
     fetCards()
 })
    
-
-    const onDeleteCard =  (id: string) => {
-     
+ const onDeleteCard = async  (id: string) => {
+     const newCards =  await DeleteCards(id)
+     if(newCards){
+        setCards(newCards)
+     }
       }
 
     return(
